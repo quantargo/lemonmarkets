@@ -18,6 +18,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![CRAN status](https://www.r-pkg.org/badges/version/lemonmarkets)](https://CRAN.R-project.org/package=lemonmarkets)
+[![R-CMD-check](https://github.com/quantargo/lemonmarkets/workflows/R-CMD-check/badge.svg)](https://github.com/quantargo/lemonmarkets/actions)
 <!-- badges: end -->
 
 The goal of lemonmarkets is to provide an R interface to the [lemon.markets](https://lemon.markets) trading API.

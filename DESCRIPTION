@@ -1,0 +1,16 @@
+Package: lemonmarkets
+Title: Interface to the lemon.markets trading API.
+Version: 0.0.0.9000
+Authors@R: 
+    person("Mario", "Annau", , "mario.annau@quantargo.com", role = c("aut", "cre"),
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: High level R interface to the lemon.markets trading REST-API supporting 
+    market data retrieval, order creation and account management.
+License: GPL-2
+Suggests: 
+    testthat (>= 3.0.0),
+    roxygen2
+Config/testthat/edition: 3
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1

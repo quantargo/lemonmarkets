@@ -1,4 +1,10 @@
-# 1. Get bearer token
+#'  Get Lemon Markets Bearer Token
+#'
+#' Retrive a bearer/session token to access the Lemonmarkets
+#' API.
+#'
+#' @param client_id character; Client ID to be used.
+#' @param client_secret character; Client Secret to be used.
 #' @export
 get_token <- function(client_id = Sys.getenv("LEMON_MARKETS_CLIENT_ID"),
                       client_secret = Sys.getenv("LEMON_MARKETS_CLIENT_SECRET")) {

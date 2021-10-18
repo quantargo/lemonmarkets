@@ -1,5 +1,5 @@
 Package: lemonmarkets
-Title: Interface to the lemon.markets trading API.
+Title: Interface to the lemon.markets trading API
 Version: 0.0.0.9000
 Authors@R: 
     person("Mario", "Annau", , "mario.annau@quantargo.com", role = c("aut", "cre"),
@@ -7,6 +7,9 @@ Authors@R:
 Description: High level R interface to the lemon.markets trading REST-API supporting 
     market data retrieval, order creation and account management.
 License: GPL-2
+Imports:
+    httr,
+    zoo
 Suggests: 
     testthat (>= 3.0.0),
     roxygen2

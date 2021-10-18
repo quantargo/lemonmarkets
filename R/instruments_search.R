@@ -1,5 +1,11 @@
-# Retrieve tradable instruments
-# instruments_search(search = "daimler")
+#' Retrieve tradable instruments
+#'
+#' @param search character; Search term to find requested instrument.
+#' @param isin character; ISIN of instrument to be retrieved.
+#' @examples
+#' \dontrun{
+#'   instruments_search(search = "daimler")
+#' }
 #' @export
 instruments_search <- function(search = NULL, isin = NULL) {
   search_string <- paste(unlist(list(search = search, isin = isin)), collapse = "&")

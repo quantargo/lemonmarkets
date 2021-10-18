@@ -3,3 +3,6 @@
 export(get_ohcl_data)
 export(get_token)
 export(instruments_search)
+importFrom(httr,add_headers)
+importFrom(httr,content)
+importFrom(zoo,zoo)

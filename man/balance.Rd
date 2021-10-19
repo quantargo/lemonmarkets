@@ -6,12 +6,15 @@
 \usage{
 balance(space_id = NULL)
 }
+\arguments{
+\item{space_id}{character; Optional space ID for which balance shall be retrieved. See also \code{list_spaces()}}
+}
 \description{
 Get Balance of Account or Space
 }
 \examples{
 \dontrun{
 balance()
-balance(space_id = "69fc7fbe-802d-4cd4-9f02-8965536c6896")
+balance(space_id = "e44907b7-d131-4ec9-9647-a2649480003d")
 }
 }

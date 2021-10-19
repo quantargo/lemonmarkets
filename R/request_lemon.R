@@ -1,11 +1,11 @@
-#' @importFrom httr add_headers
+#' @importFrom httr add_headers GET
+#' @importFrom utils URLencode
 request_lemon <- function(lemon_url) {
-  resp <- httr::GET(lemon_url,
-                    add_headers(Authorization = sprintf("Bearer %s", get_token())))
+  resp <- GET(URLencode(lemon_url),
+              add_headers(Authorization = sprintf("Bearer %s", auth())))
   if (resp$status_code != 200) {
-    print(content(resp))
-    stop("not handled yet")
-    # content(resp)
+    msg <- sprintf("%s (%d)", content(resp)$detail, resp$status_code)
+    stop(msg)
   }
   resp
 }

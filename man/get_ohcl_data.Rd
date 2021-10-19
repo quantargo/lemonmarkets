@@ -4,13 +4,7 @@
 \alias{get_ohcl_data}
 \title{Get Market data in OHCL Format}
 \usage{
-get_ohcl_data(
-  isin,
-  freq = "daily",
-  interval = 1,
-  from = Sys.Date() - 30,
-  is_live = Sys.getenv("LEMON_MARKETS_IS_LIVE", FALSE)
-)
+get_ohcl_data(isin, freq = "daily", interval = 1, from = Sys.Date() - 30)
 }
 \arguments{
 \item{isin}{character; ISIN of instrument to be retrieved.}
@@ -20,8 +14,6 @@ get_ohcl_data(
 \item{interval}{character; Interval of time series, defaults to 1. E.g. freq = "hourly" and interval = 2 means every to hours.}
 
 \item{from}{character; Starting date to be retrieved in ISO format YYYY-mm-dd}
-
-\item{is_live}{logical; Specify if data through live API shall be retrieved.}
 }
 \description{
 Get Market data in OHCL Format

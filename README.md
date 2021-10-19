@@ -29,8 +29,7 @@ This is how you can get started with the lemonmarkets api:
 
 ``` r
 library(lemonmarkets)
-
-get_token()
+authenticate()
 instr <- instruments_search("daimler")
 head(instr)
 #>           isin    wkn                      name                         title

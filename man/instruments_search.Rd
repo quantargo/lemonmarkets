@@ -4,9 +4,23 @@
 \alias{instruments_search}
 \title{Retrieve tradable instruments}
 \usage{
-instruments_search(search = NULL, isin = NULL)
+instruments_search(
+  params = list(mic = NULL, isin = NULL, search = NULL, type = NULL, currency = NULL,
+    tradable = NULL)
+)
 }
 \arguments{
+\item{params}{list; search parameters to be specified in list.
+The list may contain the following elements:
+\describe{
+\item{mic}{Enter a Market Identifier Code (MIC) in there. Default is XMUN.}
+\item{isin}{Specify the ISIN you are interested in. You can also specify multiple ISINs. Maximum 10 ISINs per Request.}
+\item{search}{search for Name/Title, ISIN, WKN or symbol. You can also perform a partial search by only specifiying the first 4 symbols.}
+\item{type}{Search by Instrument type. Valid types: stock, bond, warrant, fund, etf.}
+\item{currency}{3 letter abbreviation, e.g. "EUR" or "USD"}
+\item{tradable}{TRUE or FALSE}
+}}
+
 \item{search}{character; Search term to find requested instrument.}
 
 \item{isin}{character; ISIN of instrument to be retrieved.}
@@ -14,8 +28,14 @@ instruments_search(search = NULL, isin = NULL)
 \description{
 Retrieve tradable instruments
 }
+\note{
+Does not support pagination, therefore result limit of 100 instruments.
+}
 \examples{
 \dontrun{
   instruments_search(search = "daimler")
 }
+}
+\seealso{
+\url{https://docs.lemon.markets/working-with-market-data#finding-a-stock}
 }

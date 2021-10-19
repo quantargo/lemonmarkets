@@ -1,13 +1,17 @@
 #' Get Balance of Account or Space
 #'
+#' @param space_id character; Optional space ID for which balance shall be retrieved. See also \code{list_spaces()}
 #' @examples
 #' \dontrun{
 #' balance()
-#' balance(space_id = "69fc7fbe-802d-4cd4-9f02-8965536c6896")
+#' balance(space_id = "e44907b7-d131-4ec9-9647-a2649480003d")
 #' }
 #' @export
 balance <- function(space_id = NULL) {
+  stopifnot(length(space_id) <= 1)
+
   balance_url <- character(0)
+
   if (is.null(space_id)) {
     balance_url <- sprintf("https://%s.lemon.markets/rest/v1/state/",
                            get_trading_url())
@@ -18,5 +22,12 @@ balance <- function(space_id = NULL) {
   }
 
   resp <- request_lemon(balance_url)
-  as.numeric(content(resp)$state$balance)
+
+  bal <- NULL
+  if (is.null(space_id)) {
+    bal <- content(resp)$state$balance
+  } else {
+    bal <- content(resp)$balance
+  }
+  as.numeric(bal)
 }

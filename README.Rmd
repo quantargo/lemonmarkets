@@ -38,7 +38,7 @@ This is how you can get started with the lemonmarkets api:
 ```{r example}
 library(lemonmarkets)
 
-get_token()
+authenticate()
 instr <- instruments_search("daimler")
 head(instr)
 ```

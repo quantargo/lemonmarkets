@@ -21,7 +21,7 @@ knitr::opts_chunk$set(
 [![R-CMD-check](https://github.com/quantargo/lemonmarkets/workflows/R-CMD-check/badge.svg)](https://github.com/quantargo/lemonmarkets/actions)
 <!-- badges: end -->
 
-The goal of lemonmarkets is to provide an R interface to the [lemon.markets](https://lemon.markets) trading API.
+The goal of lemonmarkets is to provide an R interface to the [lemon.markets](https://lemon.markets) trading API. The API docs are available at [docs.lemon.markets](https://docs.lemon.markets).
 
 ## Installation
 

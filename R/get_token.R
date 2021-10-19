@@ -5,6 +5,7 @@
 #'
 #' @param client_id character; Client ID to be used.
 #' @param client_secret character; Client Secret to be used.
+#' @importFrom httr content
 #' @export
 get_token <- function(client_id = Sys.getenv("LEMON_MARKETS_CLIENT_ID"),
                       client_secret = Sys.getenv("LEMON_MARKETS_CLIENT_SECRET")) {
@@ -18,7 +19,7 @@ get_token <- function(client_id = Sys.getenv("LEMON_MARKETS_CLIENT_ID"),
                      body = list(client_id = client_id,
                                  client_secret = client_secret,
                                  grant_type = "client_credentials"))
-  content(token)$access_token
+  lemon_token <- content(token)$access_token
   options(LEMON_MARKETS_TOKEN = lemon_token)
-  lemon_token
+  invisible(lemon_token)
 }

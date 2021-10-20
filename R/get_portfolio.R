@@ -12,6 +12,6 @@ get_portfolio <- function(space_id) {
                          get_trading_url(), space_id)
   resp <- request_lemon(request_url)
 
-  out <- data.frame(content(resp)$results)
+  out <- do.call(rbind, lapply(content(resp)$results, data.frame))
   out
 }

@@ -13,5 +13,9 @@ get_portfolio <- function(space_id) {
   resp <- request_lemon(request_url)
 
   out <- do.call(rbind, lapply(content(resp)$results, data.frame))
+  out$quantity <- as.integer(out$quantity)
+  out$average_price <- as.numeric(out$average_price)
+  out$latest_total_value <- as.numeric(out$latest_total_value)
+
   out
 }

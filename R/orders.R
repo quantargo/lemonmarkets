@@ -33,7 +33,7 @@ create_order <- function(space_id, isin, quantity, valid_until = Sys.time() + 86
   out <- request_post_lemon(request_url, body = request_body)
   df_out <- data.frame(t(content(out)))
 
-  if (activate) {
+  if (activate & !is.null(df_out$uuid)) {
     df_out$status <- activate_order(space_id, df_out$uuid)
   }
   df_out

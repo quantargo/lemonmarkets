@@ -35,7 +35,7 @@ instruments_search <- function(
   }
 
   instr_url <- sprintf("https://%s.lemon.markets/v1/instruments/?%s",
-                       get_data_url(),
+                       data_url(),
                        search_string)
   resp <- request_lemon(instr_url)
   do.call(rbind, lapply(content(resp)$results, data.frame))

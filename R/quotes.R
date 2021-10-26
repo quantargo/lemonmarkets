@@ -5,9 +5,9 @@
 #' @importFrom httr content
 #' @importFrom zoo zoo
 #' @export
-get_quotes <- function(isin) {
+quotes <- function(isin) {
   request_url <- sprintf("https://%s.lemon.markets/v1/quotes/?isin=%s&epoch=false",
-                         get_data_url(),
+                         data_url(),
                          isin)
 
   quotes <- request_lemon(request_url)

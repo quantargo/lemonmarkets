@@ -20,7 +20,7 @@ create_order <- function(space_id, isin, quantity, valid_until = Sys.time() + 86
   side <- ifelse(quantity >= 0, "buy", "sell")
 
   request_url <- sprintf("https://%s.lemon.markets/rest/v1/spaces/%s/orders",
-                         get_trading_url(),
+                         trading_url(),
                          space_id)
 
   request_body <- list(
@@ -52,7 +52,7 @@ create_order <- function(space_id, isin, quantity, valid_until = Sys.time() + 86
 #' @rdname orders
 get_orders <- function(space_id) {
   request_url <- sprintf("https://%s.lemon.markets/rest/v1/spaces/%s/orders",
-                         get_trading_url(), space_id)
+                         trading_url(), space_id)
   resp <- request_lemon(request_url)
 
   out <- content(resp)$results
@@ -66,7 +66,7 @@ get_orders <- function(space_id) {
 #' @rdname orders
 delete_order <- function(space_id, order_id) {
   request_url <- sprintf("https://%s.lemon.markets/rest/v1/spaces/%s/orders/%s/",
-                         get_trading_url(),
+                         trading_url(),
                          space_id,
                          order_id)
 
@@ -80,7 +80,7 @@ delete_order <- function(space_id, order_id) {
 #' @rdname orders
 activate_order <- function(space_id, order_id, verbose = getOption("verbose")) {
   request_url <- sprintf("https://%s.lemon.markets/rest/v1/spaces/%s/orders/%s/activate/",
-                         get_trading_url(),
+                         trading_url(),
                          space_id,
                          order_id)
   out <- request_lemon(request_url, PUT)

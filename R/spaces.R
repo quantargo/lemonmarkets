@@ -5,8 +5,8 @@
 #' list_spaces()
 #' }
 #' @export
-list_spaces <- function() {
-  request_url <- sprintf("https://%s.lemon.markets/rest/v1/spaces/", get_trading_url())
+spaces <- function() {
+  request_url <- sprintf("https://%s.lemon.markets/rest/v1/spaces/", trading_url())
   resp <- request_lemon(request_url)
   out <- data.frame(content(resp)$results)
   out$state.balance <- as.numeric(out$state.balance)

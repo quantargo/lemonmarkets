@@ -6,22 +6,26 @@
 #' @param from character; Starting date to be retrieved in ISO format YYYY-mm-dd
 #' @importFrom httr content
 #' @importFrom zoo zoo
+#' @examples
+#' # Get Data for Deutsche Post
+#' ohcl("DE0005552004")
+#' @return zoo objects with the columns "open", "high", "low" and "close"
 #' @export
-get_ohcl_data <- function(
+ohcl <- function(
   isin,
   freq = "daily",
   interval = 1,
   from = Sys.Date() - 30) {
 
-  request_url <- sprintf("https://%s.lemon.markets/v1/ohlc/d1/?isin=%s&epoch=false&from=%s",
+  request_url <- sprintf("https://%s.lemon.markets/v1/ohlc/d1/?isin=%s&epoch=true&from=%s",
+                         data_url(),
                          isin,
                          from)
 
-  ohcl <- request_lemon(request_url)
-  ohcl <- do.call(rbind, lapply(content(ohcl)$results, data.frame))
+  dat <- request_lemon(request_url)
+  dat <- do.call(rbind, lapply(content(dat)$results, data.frame))
 
-  ohcl <- zoo(ohcl[, c("o", "h", "l", "c")], order.by = as.POSIXct(ohcl[, "t"]/1000, origin = "1970-01-01"))
-  colnames(ohcl) <- c("open", "high", "low", "close")
-  ohcl
-
+  dat <- zoo(dat[, c("o", "h", "l", "c")], order.by = as.POSIXct(dat[, "t"]/1000, origin = "1970-01-01"))
+  colnames(dat) <- c("open", "high", "low", "close")
+  dat
 }

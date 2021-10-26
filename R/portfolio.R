@@ -7,9 +7,9 @@
 #' }
 #' @return data.frame including porfolio positions.
 #' @export
-get_portfolio <- function(space_id) {
+portfolio <- function(space_id) {
   request_url <- sprintf("https://%s.lemon.markets/rest/v1/spaces/%s/portfolio/",
-                         get_trading_url(), space_id)
+                         trading_url(), space_id)
   resp <- request_lemon(request_url)
 
   out <- do.call(rbind, lapply(content(resp)$results, data.frame))

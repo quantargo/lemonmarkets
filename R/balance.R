@@ -14,10 +14,10 @@ balance <- function(space_id = NULL) {
 
   if (is.null(space_id)) {
     balance_url <- sprintf("https://%s.lemon.markets/rest/v1/state/",
-                           get_trading_url())
+                           trading_url())
   } else {
     balance_url <- sprintf("https://%s.lemon.markets/rest/v1/spaces/%s/state/",
-                           get_trading_url(),
+                           trading_url(),
                            space_id)
   }
 

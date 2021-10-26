@@ -44,6 +44,9 @@ jobs:
           extra-packages: rcmdcheck
 
       - uses: r-lib/actions/check-r-package@v1
+        env:
+          LEMON_MARKETS_CLIENT_ID: ${{ secrets.LEMON_MARKETS_CLIENT_ID }}
+          LEMON_MARKETS_CLIENT_SECRET: ${{ secrets.LEMON_MARKETS_CLIENT_SECRET }}
 
       - name: Show testthat output
         if: always()

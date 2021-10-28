@@ -33,13 +33,97 @@ remotes::install_github("quantargo/lemonmarkets")
 
 ## Get Started
 
-This is how you can get started with the lemonmarkets api:
+Before you can get started with the lemonmarkets API you need to get an API key from the [web page ](https://www.lemon.markets). Currently there is still a waitlist since the service is not publicly available yet. 
+
+After you acquired the API keys we recommend to create a new file `.Renviron` within your R project directory and enter the keys there:
+
+```{bash, eval=FALSE}
+LEMON_MARKETS_CLIENT_ID=<your-client-id>
+LEMON_MARKETS_CLIENT_SECRET=<your-client-secret>
+```
+
+The `LEMON_MARKETS_CLIENT_ID` and `LEMON_MARKETS_CLIENT_SECRET` are then available as environment variables within your R session. Alternatively, you can also set the environment variables directly within the R session as
+
+```{r, eval=FALSE}
+Sys.setenv(LEMON_MARKETS_CLIENT_ID="<your-client-id>",
+           LEMON_MARKETS_CLIENT_SECRET="<your-client-secret>")
+```
+
+Once you have set the environment variables you can load the lemonmarkets package and get your access token through the `auth()` function:
 
 ```{r example}
 library(lemonmarkets)
 
-authenticate()
-instr <- instruments_search("daimler")
-head(instr)
+auth()
 ```
+
+All subsequent calls will use the resulting access token which is stored in `options("LEMON_MARKETS_TOKEN")`.
+
+Currenly, all trading operations are done through pre-defined sub-accounts (spaces).
+These spaces need to be created via the web fronted to retrieve its ID.
+
+## Searching for an instrument
+
+You can search for an instrument, like Daimler stock, through `instrument_search()`:
+
+```{r}
+instruments_search(list(search = "daimler", type = "stock"))
+```
+
+## Retrieving Market Data
+
+To retrieve historical Open-High-Low-Close (OHCL) data for the German Daimler listing you can use the `ohcl()` function:
+
+```{r}
+ohcl("DE0007100000", from = Sys.Date() - 7, freq = "daily")
+```
+The example above retrieves daily data for the last week. Also other frequencies
+like like `hourly` and `min` (minute) are available. 
+
+Alternatively, you can also use `quotes()` to only retrieve the last market quote
+for an instrument:
+
+```{r}
+quotes("DE0007100000")
+```
+
+## Get Current Cash Balance
+
+The current cash balance of a specified space can be retrieved as
+
+```{r}
+space_id <- "e44907b7-d131-4ec9-9647-a2649480003d"
+bal <- balance(space_id)
+```
+
+## Place an Order
+
+You can place an order with the `create_order()` function. To place a market order of 5 shares for Daimler stock we can use
+
+```{r, eval=FALSE, echo=TRUE}
+create_order(space_id, "DE0007100000", 5)
+```
+
+Note, that orders are immediatly activated per default. You can disable this 
+features through the parameter `activate=FALSE`.
+
+
+## Get Current Portfolio
+
+To get a list of the current portfolio we can use
+
+```{r}
+portfolio(space_id)
+```
+
+
+## Quantargo Workspace Trading Example
+
+The link below contains a fully-functioning Quantargo workspace which
+uses the package to daily rebalance a mean-reversion portfolio strategy:
+
+
+## Feedback
+
+Please raise an issue through Github.
 

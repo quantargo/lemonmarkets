@@ -96,7 +96,7 @@ ohcl("DE0007100000", from = Sys.Date() - 7, freq = "daily")
 #> 2021-10-25 02:00:00 82.19 83.75 81.99 83.10
 #> 2021-10-26 02:00:00 83.00 83.92 82.80 83.01
 #> 2021-10-27 02:00:00 82.85 84.05 82.24 83.27
-#> 2021-10-28 02:00:00 83.21 83.71 82.68 83.71
+#> 2021-10-28 02:00:00 83.21 83.71 82.68 83.65
 ```
 
 The example above retrieves daily data for the last week. Also other
@@ -107,8 +107,8 @@ market quote for an instrument:
 
 ``` r
 quotes("DE0007100000")
-#>           isin b_v a_v     b    a          t  mic
-#> 1 DE0007100000 239 239 83.69 83.7 2021-10-28 XMUN
+#>           isin b_v a_v     b     a          t  mic
+#> 1 DE0007100000 239 239 83.61 83.63 2021-10-28 XMUN
 ```
 
 ## Get Current Cash Balance
@@ -165,7 +165,10 @@ portfolio(space_id)
 ## Quantargo Workspace Trading Example
 
 The link below contains a fully-functioning Quantargo workspace which
-uses the package to daily rebalance a mean-reversion portfolio strategy:
+uses the package to daily re-balance a mean-reversion portfolio
+strategy:
+
+<https://www.quantargo.com/qbits/qbit-example-lemonmarkets-reversion-dax40?panel=viewer>
 
 ## Feedback
 

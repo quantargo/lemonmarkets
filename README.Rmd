@@ -120,8 +120,9 @@ portfolio(space_id)
 ## Quantargo Workspace Trading Example
 
 The link below contains a fully-functioning Quantargo workspace which
-uses the package to daily rebalance a mean-reversion portfolio strategy:
+uses the package to daily re-balance a mean-reversion portfolio strategy:
 
+https://www.quantargo.com/qbits/qbit-example-lemonmarkets-reversion-dax40?panel=viewer
 
 ## Feedback
 
